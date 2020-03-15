@@ -8,13 +8,15 @@ public class Database
 
     public static void main(String...args)
     {
-        Database.ref = new Database();
 
-        Database.ref.instance =  new DatabaseInstance();
     }
 
     public Database()
     {
+        Database.ref = this;
 
+        Database.ref.instance = new DatabaseInstance();
     }
 }
+
+

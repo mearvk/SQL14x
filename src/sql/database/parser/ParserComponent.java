@@ -16,6 +16,8 @@ public class ParserComponent extends Component
     public ParserComponent(String name, Memory memory)
     {
         this.name = name; this.memory = memory;
+
+
     }
 
     public class ParserPublicInterface
