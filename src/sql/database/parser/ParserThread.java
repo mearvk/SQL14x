@@ -14,9 +14,7 @@ public class ParserThread extends Thread
     {
         while(true)
         {
-            ParserComponent component =  (ParserComponent) Memory.ref.instance.pull("//parser");
 
-            if(!component.publicinstance.ready()) return;
         }
     }
 }
