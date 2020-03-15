@@ -69,7 +69,7 @@ public class ParserComponent extends Component
             return this;
         }
 
-        public Boolean ready(String input)
+        private Boolean ready(String input)
         {
             ParserComponent component =  (ParserComponent)Memory.ref.instance.pull("//parser");
 

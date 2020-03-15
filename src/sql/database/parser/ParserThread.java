@@ -12,10 +12,11 @@ public class ParserThread extends Thread
     @Override
     public void run()
     {
-        ParserComponent component =  (ParserComponent) Memory.ref.instance.pull("//parser");
+        while(true)
+        {
+            ParserComponent component =  (ParserComponent) Memory.ref.instance.pull("//parser");
 
-        if(!component.publicinstance.ready()) return;
-
-
+            if(!component.publicinstance.ready()) return;
+        }
     }
 }
