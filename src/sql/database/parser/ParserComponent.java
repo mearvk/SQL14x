@@ -9,6 +9,10 @@ public class ParserComponent extends Component
 
     public Memory memory;
 
+    public ParserPublicInterface _public;
+
+    public ParserPublicInterface _private;
+
     public ParserComponent(String name, Memory memory)
     {
         this.name = name; this.memory = memory;
@@ -22,5 +26,10 @@ public class ParserComponent extends Component
     public class PrivatePublicInterface
     {
 
+    }
+
+    public ParserComponent parse(String string)
+    {
+        return this;
     }
 }

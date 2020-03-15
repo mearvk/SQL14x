@@ -16,6 +16,8 @@ public class Memory extends Component
 
     public Memory()
     {
+        Memory.ref = this;
+
         Memory.ref.instance = this.instance = new MemoryInstance();
 
         this.name = "//memory";
@@ -23,6 +25,8 @@ public class Memory extends Component
 
     public Memory(String name)
     {
+        Memory.ref = this;
+
         Memory.ref.instance = this.instance = new MemoryInstance();
 
         this.name = name;
