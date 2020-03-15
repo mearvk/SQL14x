@@ -52,7 +52,7 @@ public class ParserComponent extends Component
             return this;
         }
 
-        public ParserPrivateInterfaceInstance parse(String string)
+        private ParserPrivateInterfaceInstance parse(String string)
         {
             return this;
         }
