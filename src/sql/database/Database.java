@@ -2,15 +2,17 @@ package sql.database;
 
 public class Database
 {
-    public static void main(String...args)
-    {
-        Database database = new Database();
-    }
+    public static Database ref;
 
     public DatabaseInstance instance;
 
+    public static void main(String...args)
+    {
+        Database.ref = new Database();
+    }
+
     public Database()
     {
-        this.instance = new DatabaseInstance();
+        Database.ref.instance = this.instance = new DatabaseInstance();
     }
 }
