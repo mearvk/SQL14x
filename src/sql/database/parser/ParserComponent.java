@@ -9,15 +9,15 @@ public class ParserComponent extends Component
 
     private Boolean run = false;
 
-    private Runnable runnable;
+    private ParserThread runnable;
 
     public String name;
 
     public Memory memory;
 
-    public ParserPublicInterfaceInstance publicinstance;
+    public ParserPublicInterfaceInstance publicinstance = new ParserPublicInterfaceInstance();
 
-    public ParserPrivateInterfaceInstance privateinstance;
+    public ParserPrivateInterfaceInstance privateinstance = new ParserPrivateInterfaceInstance();
 
     public ParserComponent(String name, Memory memory)
     {
@@ -35,6 +35,15 @@ public class ParserComponent extends Component
             return this;
         }
 
+        public ParserPublicInterfaceInstance clear(String input)
+        {
+            ParserComponent component =  (ParserComponent)Memory.ref.instance.pull("//parser");
+
+            component.input = "";
+
+            return this;
+        }
+
         public ParserPublicInterfaceInstance parse(String string)
         {
             return this;
@@ -48,6 +57,15 @@ public class ParserComponent extends Component
             ParserComponent component =  (ParserComponent)Memory.ref.instance.pull("//parser");
 
             component.input = input;
+
+            return this;
+        }
+
+        private ParserPrivateInterfaceInstance clear(String input)
+        {
+            ParserComponent component =  (ParserComponent)Memory.ref.instance.pull("//parser");
+
+            component.input = "";
 
             return this;
         }
