@@ -2,6 +2,7 @@ package sql.database.parser;
 
 import sql.database.components.Component;
 import sql.database.memory.Memory;
+import sql.database.memory.MemoryInstance;
 
 public class ParserComponent extends Component
 {
@@ -9,7 +10,7 @@ public class ParserComponent extends Component
 
     private Boolean run = false;
 
-    private ParserThread runnable;
+    private ParserThread runnable = new ParserThread();
 
     public String name;
 
@@ -19,7 +20,7 @@ public class ParserComponent extends Component
 
     public ParserPrivateInterfaceInstance privateinstance = new ParserPrivateInterfaceInstance();
 
-    public ParserComponent(String name, Memory memory)
+    public ParserComponent(String name, MemoryInstance instance)
     {
         this.name = name; this.memory = memory;
     }
@@ -33,6 +34,13 @@ public class ParserComponent extends Component
             component.input = input;
 
             return this;
+        }
+
+        public Boolean ready()
+        {
+            ParserComponent component =  (ParserComponent)Memory.ref.instance.pull("//parser");
+
+            return (component.input != null && !component.input.equals(""));
         }
 
         public ParserPublicInterfaceInstance clear(String input)
@@ -61,6 +69,13 @@ public class ParserComponent extends Component
             return this;
         }
 
+        public Boolean ready(String input)
+        {
+            ParserComponent component =  (ParserComponent)Memory.ref.instance.pull("//parser");
+
+            return (component.input != null && !component.input.equals(""));
+        }
+
         private ParserPrivateInterfaceInstance clear(String input)
         {
             ParserComponent component =  (ParserComponent)Memory.ref.instance.pull("//parser");
@@ -69,6 +84,8 @@ public class ParserComponent extends Component
 
             return this;
         }
+
+
 
         private ParserPrivateInterfaceInstance parse(String string)
         {

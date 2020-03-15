@@ -12,13 +12,13 @@ public class DatabaseInstance
 
     //
 
-    public ParserComponent parser = new ParserComponent("//parser", memory);
+    public ParserComponent parser = new ParserComponent("//parser", memory.instance);
 
-    public PersistorComponent persistor = new PersistorComponent("//persistor", memory);
+    public PersistorComponent persistor = new PersistorComponent("//persistor", memory.instance);
 
-    public NetworkComponent network = new NetworkComponent("//network", memory);
+    public NetworkComponent network = new NetworkComponent("//network", memory.instance);
 
-    public ProcessorComponent processor = new ProcessorComponent("//processor", memory);
+    public ProcessorComponent processor = new ProcessorComponent("//processor", memory.instance);
 
     //
 
