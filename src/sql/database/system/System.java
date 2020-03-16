@@ -1,13 +1,27 @@
 package sql.database.system;
 
+import sql.database.memory.Memory;
+
 import java.util.HashMap;
 
 public class System
 {
-    public static HashMap<Integer, Object> connections = new HashMap<>();
+    public String name = "//system";
 
-    public System()
+    public SystemInstance instance = new SystemInstance();
+
+    public static System ref;
+
+    public Memory memory = new Memory("//memory");
+
+
+
+
+
+    public System(String name)
     {
+        Memory.ref.instance.push(name, this);
 
+        System.ref = this;
     }
 }

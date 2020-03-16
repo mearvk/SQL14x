@@ -9,11 +9,14 @@ import sql.database.parser.Parser;
 
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.HashMap;
 
 import static sql.database.components.Component.READY;
 
 public class NetworkSocket extends ThreadedComponent
 {
+    public static HashMap<Integer, Object> connections = new HashMap<>();
+
     public ServerSocket server_socket;
 
     public Boolean running;

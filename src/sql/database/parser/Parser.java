@@ -35,25 +35,9 @@ public class Parser extends Component
     {
         public ParserPublicInterfaceInstance connection(NetworkConnection connection)
         {
-            System.connections.put(connection.hashCode(), connection);
+            System.ref.instance.database_instance.network.connections.put(connection.hashCode(), connection);
 
             return this;
-        }
-
-        public ParserPublicInterfaceInstance inputstream(InputStream in)
-        {
-            Parser component =  (Parser)Memory.ref.instance.pull("//parser");
-
-            component.input = input;
-
-            return this;
-        }
-
-        public Boolean outputstream(OutputStream out)
-        {
-            Parser component =  (Parser)Memory.ref.instance.pull("//parser");
-
-            return (component.input != null && !component.input.equals(""));
         }
 
         public ParserPublicInterfaceInstance status(String status)
