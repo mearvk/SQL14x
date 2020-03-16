@@ -1,14 +1,16 @@
 package sql.database.memory;
 
+import sql.database.nominative.Name;
+
 import java.util.HashMap;
 
 public class MemoryInstance
 {
-    HashMap<String, Object> map = new HashMap();
+    HashMap<Name, Object> map = new HashMap();
 
-    public Object push(String string, Object object)
+    public Object push(Name name, Object object)
     {
-        return map.put(string,object);
+        return map.put(name, object);
     }
 
     public Object pull(String string)

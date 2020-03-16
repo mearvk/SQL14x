@@ -2,6 +2,7 @@ package sql.database.network;
 
 import sql.database.components.ThreadedComponent;
 import sql.database.connections.NetworkConnection;
+import sql.database.nominative.Name;
 import sql.database.parser.Parser;
 import sql.database.system.System;
 
@@ -20,11 +21,11 @@ public class Network extends ThreadedComponent
 
     public Network(String name)
     {
-        System.ref.memory.instance.push(name, this);
+        System.ref.memory.instance.push(new Name(name), this);
 
         try
         {
-            System.ref.memory.instance.push("//serversocket", this.server_socket = new ServerSocket(80));
+            System.ref.memory.instance.push(new Name("//serversocket"), this.server_socket = new ServerSocket(80));
         }
         catch (Exception e)
         {

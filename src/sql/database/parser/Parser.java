@@ -3,19 +3,20 @@ package sql.database.parser;
 import sql.database.components.Component;
 import sql.database.connections.NetworkConnection;
 import sql.database.memory.Memory;
+import sql.database.nominative.Name;
 import sql.database.system.System;
 
 public class Parser extends Component
 {
     private String input;
 
-    public String name;
+    public Name name;
 
     public PublicParserInterface public_instance = new PublicParserInterface();
 
     //public ParserPrivateInterfaceInstance private_instance = new ParserPrivateInterfaceInstance();
 
-    public Parser(String name)
+    public Parser(Name name)
     {
         this.name = name;
 

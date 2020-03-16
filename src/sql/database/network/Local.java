@@ -1,14 +1,10 @@
 package sql.database.network;
-
-import sql.database.memory.Memory;
-import sql.database.memory.MemoryInstance;
+import sql.database.nominative.Name;
 import sql.database.system.System;
-
-import java.net.ServerSocket;
 
 public class Local
 {
-    public Local(String name)
+    public Local(Name name)
     {
         System.ref.memory.instance.push(name, this);
     }

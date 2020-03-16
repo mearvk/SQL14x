@@ -8,4 +8,9 @@ public class SystemInstance
     public String name = "$";
 
     public DatabaseInstance database_instance = new DatabaseInstance();
+
+    public SystemInstance(String name)
+    {
+
+    }
 }
