@@ -14,7 +14,7 @@ public class Parser extends Component
 {
     private String input;
 
-    private ParserThread runnable = new ParserThread();
+    //private ParserThread runnable = new ParserThread();
 
     public String name;
 

@@ -2,13 +2,10 @@ package sql.database.network;
 
 
 import sql.database.components.ThreadedComponent;
-import sql.database.connections.NetworkConnection;
 import sql.database.memory.Memory;
-import sql.database.memory.MemoryInstance;
 import sql.database.parser.Parser;
 
 import java.net.ServerSocket;
-import java.net.Socket;
 import java.util.HashMap;
 
 import static sql.database.components.Component.READY;

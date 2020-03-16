@@ -6,8 +6,6 @@ public class Database
 
     public DatabaseInstance instance;
 
-
-
     public Database()
     {
         Database.ref = this;
