@@ -7,7 +7,7 @@ import java.net.ServerSocket;
 
 public class LocalSocket
 {
-    public LocalSocket(String name, MemoryInstance instance)
+    public LocalSocket(String name)
     {
         Memory.ref.instance.push(name, this);
     }

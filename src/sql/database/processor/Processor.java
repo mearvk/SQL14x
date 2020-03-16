@@ -13,11 +13,9 @@ public class Processor extends Component
 
     public ProcessorPublicInterfaceInstance public_instance;
 
-    public Processor(String name, MemoryInstance instance)
+    public Processor(String name)
     {
         this.name = name;
-
-        this.instance = instance;
     }
 
     public class ProcessorPublicInterfaceInstance

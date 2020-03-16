@@ -2,6 +2,7 @@ package sql.database.network;
 
 
 import sql.database.components.ThreadedComponent;
+import sql.database.connections.NetworkConnection;
 import sql.database.memory.Memory;
 import sql.database.memory.MemoryInstance;
 import sql.database.parser.Parser;
@@ -13,19 +14,17 @@ import static sql.database.components.Component.READY;
 
 public class NetworkSocket extends ThreadedComponent
 {
-    public Socket socket;
-
     public ServerSocket server_socket;
 
     public Boolean running;
 
-    public NetworkSocket(String name, MemoryInstance instance)
+    public NetworkSocket(String name)
     {
         Memory.ref.instance.push(name, this);
 
         try
         {
-            Memory.ref.instance.push("//serversocket", new ServerSocket(80));
+            Memory.ref.instance.push("//serversocket", this.server_socket = new ServerSocket(80));
         }
         catch (Exception e)
         {
@@ -36,23 +35,11 @@ public class NetworkSocket extends ThreadedComponent
     @Override
     public void run()
     {
-        ServerSocket serversocket = (ServerSocket)Memory.ref.instance.pull("//serversocket");
-
         while(running)
         {
             try
             {
-                Socket socket = serversocket.accept();
-
-                Parser component = (Parser)Memory.ref.instance.pull("//parser");
-
-                if(component==null) throw new NullPointerException();
-
-                component.public_instance.inputstream(socket.getInputStream());
-
-                component.public_instance.outputstream(socket.getOutputStream());
-
-                component.public_instance.status(READY);
+                NetworkConnection network_connection = new NetworkConnection(this.server_socket.accept());
             }
             catch(Exception e)
             {

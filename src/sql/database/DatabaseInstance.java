@@ -15,15 +15,15 @@ public class DatabaseInstance
 
     //
 
-    public Parser parser = new Parser("//parser", memory.instance);
+    public Parser parser = new Parser("//parser");
 
-    public Persistor persistor = new Persistor("//persistor", memory.instance);
+    public Persistor persistor = new Persistor("//persistor");
 
-    public Processor processor = new Processor("//processor", memory.instance);
+    public Processor processor = new Processor("//processor");
 
-    public NetworkSocket network = new NetworkSocket("//networksocket", memory.instance);
+    public NetworkSocket network = new NetworkSocket("//networksocket");
 
-    public LocalSocket local = new LocalSocket("//localsocket", memory.instance);
+    public LocalSocket local = new LocalSocket("//localsocket");
 
     //
 

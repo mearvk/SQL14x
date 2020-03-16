@@ -21,11 +21,9 @@ public class Parser extends Component
 
     public ParserPrivateInterfaceInstance private_instance = new ParserPrivateInterfaceInstance();
 
-    public Parser(String name, MemoryInstance instance)
+    public Parser(String name)
     {
         this.name = name;
-
-        this.instance = instance;
 
         Memory.ref.instance.push(name, this);
     }

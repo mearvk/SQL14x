@@ -5,5 +5,10 @@ import sql.database.memory.MemoryInstance;
 
 public class Persistor
 {
-    public Persistor(String name, MemoryInstance instance){}
+    public String name;
+
+    public Persistor(String name)
+    {
+        this.name = name;
+    }
 }
