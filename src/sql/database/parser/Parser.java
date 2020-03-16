@@ -18,7 +18,7 @@ public class Parser extends Component
 
     public String name;
 
-    public MemoryInstance instance;
+    //public MemoryInstance instance;
 
     public ParserPublicInterfaceInstance public_instance = new ParserPublicInterfaceInstance();
 

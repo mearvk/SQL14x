@@ -7,11 +7,11 @@ import java.util.HashMap;
 
 public class System
 {
-    public String name = "//system";
+    public static System ref;
 
     public SystemInstance instance = new SystemInstance();
 
-    public static System ref;
+    public Memory memory = new Memory("//memory");
 
     public static void main(String...args)
     {
@@ -20,8 +20,6 @@ public class System
 
     public System(String name)
     {
-        //Memory memory = new Memory("//memory");
-
         Memory.ref.instance.push(name, this);
 
         System.ref = this;
