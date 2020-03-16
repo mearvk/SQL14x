@@ -3,9 +3,9 @@ package sql.database.processor;
 import sql.database.components.Component;
 import sql.database.memory.Memory;
 import sql.database.memory.MemoryInstance;
-import sql.database.parser.ParserComponent;
+import sql.database.parser.Parser;
 
-public class ProcessorComponent extends Component
+public class Processor extends Component
 {
     public String name;
 
@@ -13,7 +13,7 @@ public class ProcessorComponent extends Component
 
     public ProcessorPublicInterfaceInstance public_instance;
 
-    public ProcessorComponent(String name, MemoryInstance instance)
+    public Processor(String name, MemoryInstance instance)
     {
         this.name = name;
 
@@ -22,9 +22,9 @@ public class ProcessorComponent extends Component
 
     public class ProcessorPublicInterfaceInstance
     {
-        public ProcessorComponent.ProcessorPublicInterfaceInstance process(String input)
+        public Processor.ProcessorPublicInterfaceInstance process(String input)
         {
-            ParserComponent parser =  (ParserComponent) Memory.ref.instance.pull("//parser");
+            Parser parser =  (Parser) Memory.ref.instance.pull("//parser");
 
             parser.public_instance.parse();
 
@@ -32,7 +32,7 @@ public class ProcessorComponent extends Component
         }
     }
 
-    public ProcessorComponent process()
+    public Processor process()
     {
         return this;
     }

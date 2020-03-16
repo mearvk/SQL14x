@@ -4,7 +4,10 @@ import sql.database.components.Component;
 import sql.database.memory.Memory;
 import sql.database.memory.MemoryInstance;
 
-public class ParserComponent extends Component
+import java.io.InputStream;
+import java.io.OutputStream;
+
+public class Parser extends Component
 {
     private String input;
 
@@ -18,7 +21,7 @@ public class ParserComponent extends Component
 
     public ParserPrivateInterfaceInstance private_instance = new ParserPrivateInterfaceInstance();
 
-    public ParserComponent(String name, MemoryInstance instance)
+    public Parser(String name, MemoryInstance instance)
     {
         this.name = name;
 
@@ -29,25 +32,25 @@ public class ParserComponent extends Component
 
     public class ParserPublicInterfaceInstance
     {
-        public ParserPublicInterfaceInstance push(String input)
+        public ParserPublicInterfaceInstance inputstream(InputStream in)
         {
-            ParserComponent component =  (ParserComponent)Memory.ref.instance.pull("//parser");
+            Parser component =  (Parser)Memory.ref.instance.pull("//parser");
 
             component.input = input;
 
             return this;
         }
 
-        public Boolean ready()
+        public Boolean outputstream(OutputStream out)
         {
-            ParserComponent component =  (ParserComponent)Memory.ref.instance.pull("//parser");
+            Parser component =  (Parser)Memory.ref.instance.pull("//parser");
 
             return (component.input != null && !component.input.equals(""));
         }
 
-        public ParserPublicInterfaceInstance clear()
+        public ParserPublicInterfaceInstance status(String status)
         {
-            ParserComponent component =  (ParserComponent)Memory.ref.instance.pull("//parser");
+            Parser component =  (Parser)Memory.ref.instance.pull("//parser");
 
             component.input = "";
 
@@ -64,7 +67,7 @@ public class ParserComponent extends Component
     {
         private ParserPrivateInterfaceInstance input(String input)
         {
-            ParserComponent component =  (ParserComponent)Memory.ref.instance.pull("//parser");
+            Parser component =  (Parser)Memory.ref.instance.pull("//parser");
 
             component.input = input;
 
@@ -73,14 +76,14 @@ public class ParserComponent extends Component
 
         private Boolean ready(String input)
         {
-            ParserComponent component =  (ParserComponent)Memory.ref.instance.pull("//parser");
+            Parser component =  (Parser)Memory.ref.instance.pull("//parser");
 
             return (component.input != null && !component.input.equals(""));
         }
 
         private ParserPrivateInterfaceInstance clear(String input)
         {
-            ParserComponent component =  (ParserComponent)Memory.ref.instance.pull("//parser");
+            Parser component =  (Parser)Memory.ref.instance.pull("//parser");
 
             component.input = "";
 

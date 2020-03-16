@@ -4,12 +4,14 @@ package sql.database.network;
 import sql.database.components.ThreadedComponent;
 import sql.database.memory.Memory;
 import sql.database.memory.MemoryInstance;
+import sql.database.parser.Parser;
 
-import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class NetworkComponent extends ThreadedComponent
+import static sql.database.components.Component.READY;
+
+public class NetworkSocket extends ThreadedComponent
 {
     public Socket socket;
 
@@ -17,7 +19,7 @@ public class NetworkComponent extends ThreadedComponent
 
     public Boolean running;
 
-    public NetworkComponent(String name, MemoryInstance instance)
+    public NetworkSocket(String name, MemoryInstance instance)
     {
         Memory.ref.instance.push(name, this);
 
@@ -40,14 +42,23 @@ public class NetworkComponent extends ThreadedComponent
         {
             try
             {
-                this.socket = serversocket.accept();
+                Socket socket = serversocket.accept();
 
+                Parser component = (Parser)Memory.ref.instance.pull("//parser");
 
+                if(component==null) throw new NullPointerException();
+
+                component.public_instance.inputstream(socket.getInputStream());
+
+                component.public_instance.outputstream(socket.getOutputStream());
+
+                component.public_instance.status(READY);
             }
             catch(Exception e)
             {
                 e.printStackTrace();
             }
         }
+
     }
 }

@@ -1,10 +1,13 @@
 package sql.database;
 
 import sql.database.memory.Memory;
-import sql.database.network.NetworkComponent;
-import sql.database.parser.ParserComponent;
-import sql.database.persistor.PersistenceComponent;
-import sql.database.processor.ProcessorComponent;
+import sql.database.network.LocalSocket;
+import sql.database.network.NetworkSocket;
+import sql.database.parser.Parser;
+import sql.database.persistor.Persistor;
+import sql.database.processor.Processor;
+
+import java.util.Locale;
 
 public class DatabaseInstance
 {
@@ -12,13 +15,15 @@ public class DatabaseInstance
 
     //
 
-    public ParserComponent parser = new ParserComponent("//parser", memory.instance);
+    public Parser parser = new Parser("//parser", memory.instance);
 
-    public PersistenceComponent persistor = new PersistenceComponent("//persistor", memory.instance);
+    public Persistor persistor = new Persistor("//persistor", memory.instance);
 
-    public NetworkComponent network = new NetworkComponent("//network", memory.instance);
+    public Processor processor = new Processor("//processor", memory.instance);
 
-    public ProcessorComponent processor = new ProcessorComponent("//processor", memory.instance);
+    public NetworkSocket network = new NetworkSocket("//networksocket", memory.instance);
+
+    public LocalSocket local = new LocalSocket("//localsocket", memory.instance);
 
     //
 
