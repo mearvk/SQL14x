@@ -1,4 +1,10 @@
 package sql.database.nominative;
 
-public class MemoryName {
+import sql.database.memory.Memory;
+
+public class MemoryName extends Name
+{
+    public MemoryName(String name) {
+        super(name);
+    }
 }

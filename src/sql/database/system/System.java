@@ -4,18 +4,18 @@ import sql.database.nominative.Name;
 
 public class System
 {
-    public static void main(String...args)
-    {
-        Memory memory;
-
-        System system = new System(new Memory("//memory"), new Name("//system"));
-    }
-
-    public static System ref;
+    public Memory memory;
 
     public SystemInstance instance;
 
-    public Memory memory;
+    public static System ref;
+
+    public static void main(String...args)
+    {
+        System system = new System(new Memory("//memory"), new Name("//system"));
+    }
+
+
 
     public System(Memory memory, Name name)
     {
@@ -23,7 +23,7 @@ public class System
 
         System.ref.memory = memory;
 
-        System.ref.instance = new SystemInstance("//system.instance");
+        System.ref.instance = new SystemInstance("//system/instance");
 
         System.ref.memory.instance.push(name,this);
     }
