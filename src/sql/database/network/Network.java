@@ -2,8 +2,8 @@ package sql.database.network;
 
 import sql.database.components.ThreadedComponent;
 import sql.database.connections.NetworkConnection;
-import sql.database.memory.Memory;
 import sql.database.parser.Parser;
+import sql.database.system.System;
 
 import java.net.ServerSocket;
 import java.util.HashMap;
@@ -20,11 +20,11 @@ public class Network extends ThreadedComponent
 
     public Network(String name)
     {
-        Memory.ref.instance.push(name, this);
+        System.ref.memory.instance.push(name, this);
 
         try
         {
-            Memory.ref.instance.push("//serversocket", this.server_socket = new ServerSocket(80));
+            System.ref.memory.instance.push("//serversocket", this.server_socket = new ServerSocket(80));
         }
         catch (Exception e)
         {
@@ -41,7 +41,7 @@ public class Network extends ThreadedComponent
             {
                 NetworkConnection network_connection = new NetworkConnection(this.server_socket.accept());
 
-                Parser component = (Parser)Memory.ref.instance.pull("//parser");
+                Parser component = (Parser)System.ref.memory.instance.pull("//parser");
 
                 component.public_instance.connection(network_connection);
 
