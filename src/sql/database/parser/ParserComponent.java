@@ -12,7 +12,7 @@ public class ParserComponent extends Component
 
     public String name;
 
-    public Memory memory;
+    public MemoryInstance instance;
 
     public ParserPublicInterfaceInstance public_instance = new ParserPublicInterfaceInstance();
 
@@ -20,7 +20,11 @@ public class ParserComponent extends Component
 
     public ParserComponent(String name, MemoryInstance instance)
     {
-        this.name = name; this.memory = memory;
+        this.name = name;
+
+        this.instance = instance;
+
+        Memory.ref.instance.push(name, this);
     }
 
     public class ParserPublicInterfaceInstance
