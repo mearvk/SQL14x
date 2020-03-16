@@ -3,7 +3,7 @@ package sql.database.persistor;
 import sql.database.memory.Memory;
 import sql.database.memory.MemoryInstance;
 
-public class PersistorComponent
+public class PersistenceComponent
 {
-    public PersistorComponent(String name, MemoryInstance instance){}
+    public PersistenceComponent(String name, MemoryInstance instance){}
 }
