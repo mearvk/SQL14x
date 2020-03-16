@@ -6,10 +6,7 @@ public class Database
 
     public DatabaseInstance instance;
 
-    public static void main(String...args)
-    {
-        Database database = new Database();
-    }
+
 
     public Database()
     {
