@@ -1,4 +1,6 @@
 package sql.database.components;
 
-public class Component {
+public class Component extends Object
+{
+
 }

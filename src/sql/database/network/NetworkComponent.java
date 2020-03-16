@@ -5,6 +5,7 @@ import sql.database.components.ThreadedComponent;
 import sql.database.memory.Memory;
 import sql.database.memory.MemoryInstance;
 
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -22,6 +23,15 @@ public class NetworkComponent extends ThreadedComponent
     @Override
     public void run()
     {
+        try
+        {
+            //this.server_socket = new ServerSocket(80);
 
+            Memory.ref.instance.push("//server_socket", new ServerSocket(80));
+        }
+        catch (Exception e)
+        {
+
+        }
     }
 }
