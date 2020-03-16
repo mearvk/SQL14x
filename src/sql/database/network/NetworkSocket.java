@@ -40,6 +40,12 @@ public class NetworkSocket extends ThreadedComponent
             try
             {
                 NetworkConnection network_connection = new NetworkConnection(this.server_socket.accept());
+
+                Parser component = (Parser)Memory.ref.instance.pull("//parser");
+
+                component.public_instance.connection(network_connection);
+
+                component.public_instance.status(READY);
             }
             catch(Exception e)
             {

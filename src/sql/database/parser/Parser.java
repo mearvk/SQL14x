@@ -1,11 +1,14 @@
 package sql.database.parser;
 
 import sql.database.components.Component;
+import sql.database.connections.NetworkConnection;
 import sql.database.memory.Memory;
 import sql.database.memory.MemoryInstance;
+import sql.database.system.System;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.Socket;
 
 public class Parser extends Component
 {
@@ -30,6 +33,13 @@ public class Parser extends Component
 
     public class ParserPublicInterfaceInstance
     {
+        public ParserPublicInterfaceInstance connection(NetworkConnection connection)
+        {
+            System.connections.put(connection.hashCode(), connection);
+
+            return this;
+        }
+
         public ParserPublicInterfaceInstance inputstream(InputStream in)
         {
             Parser component =  (Parser)Memory.ref.instance.pull("//parser");
