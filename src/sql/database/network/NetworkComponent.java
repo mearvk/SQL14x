@@ -15,23 +15,39 @@ public class NetworkComponent extends ThreadedComponent
 
     public ServerSocket server_socket;
 
+    public Boolean running;
+
     public NetworkComponent(String name, MemoryInstance instance)
     {
         Memory.ref.instance.push(name, this);
+
+        try
+        {
+            Memory.ref.instance.push("//serversocket", new ServerSocket(80));
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void run()
     {
-        try
-        {
-            //this.server_socket = new ServerSocket(80);
+        ServerSocket serversocket = (ServerSocket)Memory.ref.instance.pull("//serversocket");
 
-            Memory.ref.instance.push("//server_socket", new ServerSocket(80));
-        }
-        catch (Exception e)
+        while(running)
         {
+            try
+            {
+                this.socket = serversocket.accept();
 
+
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
         }
     }
 }
