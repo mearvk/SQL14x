@@ -3,61 +3,52 @@ package sql.database.parser;
 import sql.database.components.Component;
 import sql.database.connections.NetworkConnection;
 import sql.database.memory.Memory;
-import sql.database.memory.MemoryInstance;
 import sql.database.system.System;
-
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.Socket;
 
 public class Parser extends Component
 {
     private String input;
 
-    //private ParserThread runnable = new ParserThread();
-
     public String name;
 
-    //public MemoryInstance instance;
+    public PublicParserInterface public_instance = new PublicParserInterface();
 
-    public ParserPublicInterfaceInstance public_instance = new ParserPublicInterfaceInstance();
-
-    public ParserPrivateInterfaceInstance private_instance = new ParserPrivateInterfaceInstance();
+    //public ParserPrivateInterfaceInstance private_instance = new ParserPrivateInterfaceInstance();
 
     public Parser(String name)
     {
         this.name = name;
 
-        Memory.ref.instance.push(name, this);
+        System.ref.memory.instance.push(name, this);
     }
 
-    public class ParserPublicInterfaceInstance
+    public class PublicParserInterface
     {
-        public ParserPublicInterfaceInstance connection(NetworkConnection connection)
+        public PublicParserInterface connection(NetworkConnection connection)
         {
             System.ref.instance.database_instance.network.connections.put(connection.hashCode(), connection);
 
             return this;
         }
 
-        public ParserPublicInterfaceInstance status(String status)
+        public PublicParserInterface status(String status)
         {
-            Parser component =  (Parser)Memory.ref.instance.pull("//parser");
+            Parser component =  (Parser)System.ref.memory.instance.pull("//parser");
 
             component.input = "";
 
             return this;
         }
 
-        public ParserPublicInterfaceInstance parse()
+        public PublicParserInterface parse()
         {
             return this;
         }
     }
 
-    public class ParserPrivateInterfaceInstance
+    public class PrivateParserInterface
     {
-        private ParserPrivateInterfaceInstance input(String input)
+        private PrivateParserInterface input(String input)
         {
             Parser component =  (Parser)Memory.ref.instance.pull("//parser");
 
@@ -73,7 +64,7 @@ public class Parser extends Component
             return (component.input != null && !component.input.equals(""));
         }
 
-        private ParserPrivateInterfaceInstance clear(String input)
+        private PrivateParserInterface clear(String input)
         {
             Parser component =  (Parser)Memory.ref.instance.pull("//parser");
 
@@ -84,7 +75,7 @@ public class Parser extends Component
 
 
 
-        private ParserPrivateInterfaceInstance parse(String string)
+        private PrivateParserInterface parse(String string)
         {
             return this;
         }

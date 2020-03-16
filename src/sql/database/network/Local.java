@@ -2,6 +2,7 @@ package sql.database.network;
 
 import sql.database.memory.Memory;
 import sql.database.memory.MemoryInstance;
+import sql.database.system.System;
 
 import java.net.ServerSocket;
 
@@ -9,6 +10,6 @@ public class Local
 {
     public Local(String name)
     {
-        Memory.ref.instance.push(name, this);
+        System.ref.memory.instance.push(name, this);
     }
 }
