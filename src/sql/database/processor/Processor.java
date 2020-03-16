@@ -3,17 +3,18 @@ package sql.database.processor;
 import sql.database.components.Component;
 import sql.database.memory.Memory;
 import sql.database.memory.MemoryInstance;
+import sql.database.nominative.Name;
 import sql.database.parser.Parser;
 
 public class Processor extends Component
 {
-    public String name;
+    public Name name;
 
     public MemoryInstance instance;
 
     public ProcessorPublicInterfaceInstance public_instance;
 
-    public Processor(String name)
+    public Processor(Name name)
     {
         this.name = name;
     }

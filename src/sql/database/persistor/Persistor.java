@@ -1,13 +1,12 @@
 package sql.database.persistor;
 
-import sql.database.memory.Memory;
-import sql.database.memory.MemoryInstance;
+import sql.database.nominative.Name;
 
 public class Persistor
 {
-    public String name;
+    public Name name;
 
-    public Persistor(String name)
+    public Persistor(Name name)
     {
         this.name = name;
     }

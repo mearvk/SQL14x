@@ -11,6 +11,6 @@ public class SystemInstance
 
     public SystemInstance(String name)
     {
-
+        this.name = name;
     }
 }

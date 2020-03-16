@@ -9,7 +9,7 @@ import sql.database.system.System;
 import java.net.ServerSocket;
 import java.util.HashMap;
 
-import static sql.database.components.Component.ready;
+import static sql.database.components.Component.Ready;
 
 public class Network extends ThreadedComponent
 {
@@ -17,11 +17,11 @@ public class Network extends ThreadedComponent
 
     public ServerSocket server_socket;
 
-    public Boolean running;
+    public Boolean running = true;
 
-    public Network(String name)
+    public Network(Name name)
     {
-        System.ref.memory.instance.push(new Name(name), this);
+        System.ref.memory.instance.push(name, this);
 
         try
         {
@@ -40,13 +40,13 @@ public class Network extends ThreadedComponent
         {
             try
             {
-                NetworkConnection network_connection = new NetworkConnection(this.server_socket.accept());
+                NetworkConnection Network_connection = new NetworkConnection(this.server_socket.accept());
 
                 Parser component = (Parser)System.ref.memory.instance.pull("//parser");
 
-                component.public_instance.connection(network_connection);
+                component.public_instance.push_connection(Network_connection);
 
-                component.public_instance.status(ready);
+                component.public_instance.push_status(Ready);
             }
             catch(Exception e)
             {

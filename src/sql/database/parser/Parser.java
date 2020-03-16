@@ -25,14 +25,14 @@ public class Parser extends Component
 
     public class PublicParserInterface
     {
-        public PublicParserInterface connection(NetworkConnection connection)
+        public PublicParserInterface push_connection(NetworkConnection connection)
         {
             System.ref.instance.database_instance.network.connections.put(connection.hashCode(), connection);
 
             return this;
         }
 
-        public PublicParserInterface status(String status)
+        public PublicParserInterface push_status(String status)
         {
             Parser component =  (Parser)System.ref.memory.instance.pull("//parser");
 
