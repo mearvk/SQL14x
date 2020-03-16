@@ -1,16 +1,16 @@
 package sql.database.network;
 
-
 import sql.database.components.ThreadedComponent;
+import sql.database.connections.NetworkConnection;
 import sql.database.memory.Memory;
 import sql.database.parser.Parser;
 
 import java.net.ServerSocket;
 import java.util.HashMap;
 
-import static sql.database.components.Component.READY;
+import static sql.database.components.Component.ready;
 
-public class NetworkConnection extends ThreadedComponent
+public class Network extends ThreadedComponent
 {
     public static HashMap<Integer, Object> connections = new HashMap<>();
 
@@ -18,7 +18,7 @@ public class NetworkConnection extends ThreadedComponent
 
     public Boolean running;
 
-    public NetworkConnection(String name)
+    public Network(String name)
     {
         Memory.ref.instance.push(name, this);
 
@@ -39,13 +39,13 @@ public class NetworkConnection extends ThreadedComponent
         {
             try
             {
-                sql.database.connections.NetworkConnection network_connection = new sql.database.connections.NetworkConnection(this.server_socket.accept());
+                NetworkConnection network_connection = new NetworkConnection(this.server_socket.accept());
 
                 Parser component = (Parser)Memory.ref.instance.pull("//parser");
 
                 component.public_instance.connection(network_connection);
 
-                component.public_instance.status(READY);
+                component.public_instance.status(ready);
             }
             catch(Exception e)
             {
