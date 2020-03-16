@@ -5,9 +5,9 @@ import sql.database.memory.MemoryInstance;
 
 import java.net.ServerSocket;
 
-public class LocalSocket
+public class LocalConnection
 {
-    public LocalSocket(String name)
+    public LocalConnection(String name)
     {
         Memory.ref.instance.push(name, this);
     }

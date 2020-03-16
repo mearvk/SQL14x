@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 import static sql.database.components.Component.READY;
 
-public class NetworkSocket extends ThreadedComponent
+public class NetworkConnection extends ThreadedComponent
 {
     public static HashMap<Integer, Object> connections = new HashMap<>();
 
@@ -21,7 +21,7 @@ public class NetworkSocket extends ThreadedComponent
 
     public Boolean running;
 
-    public NetworkSocket(String name)
+    public NetworkConnection(String name)
     {
         Memory.ref.instance.push(name, this);
 
@@ -42,7 +42,7 @@ public class NetworkSocket extends ThreadedComponent
         {
             try
             {
-                NetworkConnection network_connection = new NetworkConnection(this.server_socket.accept());
+                sql.database.connections.NetworkConnection network_connection = new sql.database.connections.NetworkConnection(this.server_socket.accept());
 
                 Parser component = (Parser)Memory.ref.instance.pull("//parser");
 

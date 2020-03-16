@@ -7,5 +7,5 @@ public class SystemInstance
 {
     public String name = "$";
 
-    public DatabaseInstance database_instance;
+    public DatabaseInstance database_instance = new DatabaseInstance();
 }

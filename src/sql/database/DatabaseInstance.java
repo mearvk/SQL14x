@@ -1,13 +1,11 @@
 package sql.database;
 
 import sql.database.memory.Memory;
-import sql.database.network.LocalSocket;
-import sql.database.network.NetworkSocket;
+import sql.database.network.LocalConnection;
+import sql.database.network.NetworkConnection;
 import sql.database.parser.Parser;
 import sql.database.persistor.Persistor;
 import sql.database.processor.Processor;
-
-import java.util.Locale;
 
 public class DatabaseInstance
 {
@@ -21,9 +19,9 @@ public class DatabaseInstance
 
     public Processor processor = new Processor("//processor");
 
-    public NetworkSocket network = new NetworkSocket("//networksocket");
+    public NetworkConnection network = new NetworkConnection("//network");
 
-    public LocalSocket local = new LocalSocket("//localsocket");
+    public LocalConnection local = new LocalConnection("//local");
 
     //
 
