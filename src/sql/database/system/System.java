@@ -12,10 +12,14 @@ public class System
 
     public SystemInstance instance = new SystemInstance();
 
+    public Memory memory;
+
     public System(Memory memory, String name)
     {
-        Memory.ref.instance.push(name, this);
-
         System.ref = this;
+
+        System.ref.memory = memory;
+
+        System.ref.memory.instance.push(name,this);
     }
 }
