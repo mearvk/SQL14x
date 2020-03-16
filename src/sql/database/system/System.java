@@ -6,5 +6,8 @@ public class System
 {
     public static HashMap<Integer, Object> connections = new HashMap<>();
 
+    public System()
+    {
 
+    }
 }
