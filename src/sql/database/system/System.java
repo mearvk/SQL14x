@@ -14,9 +14,7 @@ public class System
     {
         System system = new System(new Memory("//memory"), new Name("//system"));
     }
-
-
-
+    
     public System(Memory memory, Name name)
     {
         System.ref = this;

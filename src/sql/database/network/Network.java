@@ -25,12 +25,14 @@ public class Network extends ThreadedComponent
 
         try
         {
-            System.ref.memory.instance.push(new Name("//serversocket"), this.server_socket = new ServerSocket(80));
+            this.server_socket = new ServerSocket(80);
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
+
+        this.start();
     }
 
     @Override
@@ -40,13 +42,13 @@ public class Network extends ThreadedComponent
         {
             try
             {
-                NetworkConnection Network_connection = new NetworkConnection(this.server_socket.accept());
+                NetworkConnection new_network_connection = new NetworkConnection(this.server_socket.accept());
 
                 Parser component = (Parser)System.ref.memory.instance.pull("//parser");
 
-                component.public_instance.push_connection(Network_connection);
+                component.public_instance.push_new_connection(new_network_connection);
 
-                component.public_instance.push_status(Ready);
+                component.public_instance.push_ready_status(Ready);
             }
             catch(Exception e)
             {
