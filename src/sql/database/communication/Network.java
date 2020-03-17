@@ -1,7 +1,8 @@
-package sql.database.network;
+package sql.database.communication;
 
 import sql.database.components.ThreadedComponent;
 import sql.database.connections.NetworkConnection;
+import sql.database.communication.threading.NetworkThread;
 import sql.database.nominative.Name;
 import sql.database.parser.Parser;
 import sql.database.system.System;
@@ -16,6 +17,8 @@ public class Network extends ThreadedComponent
     public static HashMap<Integer, Object> connections = new HashMap<>();
 
     public ServerSocket server_socket;
+
+    public NetworkThread thread = new NetworkThread();
 
     public Boolean running = true;
 

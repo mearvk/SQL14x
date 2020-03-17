@@ -1,4 +1,4 @@
-package sql.database.network;
+package sql.database.communication;
 import sql.database.nominative.Name;
 import sql.database.system.System;
 

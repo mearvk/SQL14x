@@ -1,7 +1,7 @@
 package sql.database;
 
-import sql.database.network.Local;
-import sql.database.network.Network;
+import sql.database.communication.Local;
+import sql.database.communication.Network;
 import sql.database.nominative.Name;
 import sql.database.parser.Parser;
 import sql.database.persistor.Persistor;
