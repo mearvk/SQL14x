@@ -1,16 +1,12 @@
 package sql.database.communication;
 
 import sql.database.components.ThreadedComponent;
-import sql.database.connections.NetworkConnection;
 import sql.database.communication.threading.NetworkThread;
 import sql.database.nominative.Name;
-import sql.database.parser.Parser;
 import sql.database.system.System;
 
 import java.net.ServerSocket;
 import java.util.HashMap;
-
-import static sql.database.components.Component.Ready;
 
 public class Network extends ThreadedComponent
 {
@@ -29,35 +25,18 @@ public class Network extends ThreadedComponent
         try
         {
             this.server_socket = new ServerSocket(80);
+
+            System.ref.memory.instance.push(new Name("//serversocket"), this.server_socket);
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
-
-        this.start();
     }
 
     @Override
     public void run()
     {
-        while(running)
-        {
-            try
-            {
-                NetworkConnection new_network_connection = new NetworkConnection(this.server_socket.accept());
-
-                Parser component = (Parser)System.ref.memory.instance.pull("//parser");
-
-                component.public_instance.push_new_connection(new_network_connection);
-
-                component.public_instance.push_ready_status(Ready);
-            }
-            catch(Exception e)
-            {
-                e.printStackTrace();
-            }
-        }
 
     }
 }

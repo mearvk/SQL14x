@@ -23,7 +23,7 @@ public class Processor extends Component
     {
         public Processor.ProcessorPublicInterfaceInstance process(String input)
         {
-            Parser parser =  (Parser) Memory.ref.instance.pull("//parser");
+            Parser parser =  (Parser) Memory.ref.instance.pull(new Name("//parser"));
 
             parser.public_instance.parse();
 

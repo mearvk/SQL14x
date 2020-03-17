@@ -13,8 +13,8 @@ public class MemoryInstance
         return map.put(name, object);
     }
 
-    public Object pull(String string)
+    public Object pull(Name name)
     {
-        return map.get(string);
+        return map.get(name);
     }
 }

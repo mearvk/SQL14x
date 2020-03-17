@@ -1,7 +1,7 @@
 package sql.database.parser;
 
 import sql.database.components.Component;
-import sql.database.connections.NetworkConnection;
+import sql.database.connections.RemoteConnection;
 import sql.database.memory.Memory;
 import sql.database.nominative.Name;
 import sql.database.system.System;
@@ -25,7 +25,7 @@ public class Parser extends Component
 
     public class PublicParserInterface
     {
-        public PublicParserInterface push_new_connection(NetworkConnection connection)
+        public PublicParserInterface push_new_connection(RemoteConnection connection)
         {
             System.ref.instance.database_instance.network.connections.put(connection.hashCode(), connection);
 
@@ -34,7 +34,7 @@ public class Parser extends Component
 
         public PublicParserInterface push_ready_status(String status)
         {
-            Parser component =  (Parser)System.ref.memory.instance.pull("//parser");
+            Parser component =  (Parser)System.ref.memory.instance.pull(new Name("//parser"));
 
             component.input = "";
 
@@ -51,7 +51,7 @@ public class Parser extends Component
     {
         private PrivateParserInterface input(String input)
         {
-            Parser component =  (Parser)Memory.ref.instance.pull("//parser");
+            Parser component =  (Parser)Memory.ref.instance.pull(new Name("//parser"));
 
             component.input = input;
 
@@ -60,14 +60,14 @@ public class Parser extends Component
 
         private Boolean ready(String input)
         {
-            Parser component =  (Parser)Memory.ref.instance.pull("//parser");
+            Parser component =  (Parser)Memory.ref.instance.pull(new Name("//parser"));
 
             return (component.input != null && !component.input.equals(""));
         }
 
         private PrivateParserInterface clear(String input)
         {
-            Parser component =  (Parser)Memory.ref.instance.pull("//parser");
+            Parser component =  (Parser)Memory.ref.instance.pull(new Name("//parser"));
 
             component.input = "";
 

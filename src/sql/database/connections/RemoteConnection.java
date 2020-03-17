@@ -4,7 +4,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
-public class NetworkConnection extends Thread
+public class RemoteConnection extends Thread
 {
     public Socket socket;
 
@@ -12,7 +12,7 @@ public class NetworkConnection extends Thread
 
     public OutputStream out;
 
-    public NetworkConnection(Socket socket)
+    public RemoteConnection(Socket socket)
     {
         this.socket = socket;
 
